@@ -1,4 +1,4 @@
-const API_BASE = "http://127.0.0.1:8000";
+const API_BASE = "http://100.27.49.220";
 
 async function handleResponse(response) {
   if (!response.ok) {
