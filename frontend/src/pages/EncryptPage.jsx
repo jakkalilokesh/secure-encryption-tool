@@ -123,8 +123,13 @@ export default function EncryptPage() {
       newErrors.push("Password required for selected mode.");
     }
 
-    if (requiresPassword && password.length < 12) {
-      newErrors.push("Password must be at least 12 characters.");
+    if (requiresPassword) {
+      if (password.length < 12) {
+        newErrors.push("Password must be at least 12 characters.");
+      }
+      if (!/[A-Z]/.test(password) || !/[a-z]/.test(password) || !/[0-9]/.test(password) || !/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
+        newErrors.push("Password must contain Uppercase, Lowercase, Number, and Symbol.");
+      }
     }
 
     // X25519 Validation

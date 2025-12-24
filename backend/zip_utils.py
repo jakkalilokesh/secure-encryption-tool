@@ -217,6 +217,8 @@ def decrypt_v2(bundle, password="", x25519_priv_b64="", rsa_priv_pem=""):
     
     master_key = None
     
+    method_used = "unknown"
+
     if master_key is None and "rsa_wrapped_key" in header and rsa_priv_pem and rsa_priv_pem.strip():
         try:
             rsa_sk = serialization.load_pem_private_key(
@@ -232,6 +234,7 @@ def decrypt_v2(bundle, password="", x25519_priv_b64="", rsa_priv_pem=""):
                     label=None,
                 ),
             )
+            method_used = "rsa_wrapped"
         except Exception:
             pass 
             
@@ -252,6 +255,7 @@ def decrypt_v2(bundle, password="", x25519_priv_b64="", rsa_priv_pem=""):
                         label=None,
                     ),
                 )
+                method_used = "rsa"
             except Exception:
                 pass
 
@@ -272,6 +276,7 @@ def decrypt_v2(bundle, password="", x25519_priv_b64="", rsa_priv_pem=""):
                 x25519_enc_key = base64.b64decode(x25519_data["key"])
                 x25519_cipher = AESGCM(x25519_key)
                 master_key = x25519_cipher.decrypt(x25519_nonce, x25519_enc_key, b"master-key")
+                method_used = "x25519"
         except Exception:
             pass
     
@@ -286,6 +291,7 @@ def decrypt_v2(bundle, password="", x25519_priv_b64="", rsa_priv_pem=""):
                 pw_enc_key = base64.b64decode(pw_data["key"])
                 pw_cipher = AESGCM(pw_key)
                 master_key = pw_cipher.decrypt(pw_nonce, pw_enc_key, b"master-key")
+                method_used = "password"
         except Exception:
             pass
     
@@ -370,4 +376,4 @@ def decrypt_v2(bundle, password="", x25519_priv_b64="", rsa_priv_pem=""):
                 "algo": entry.get("algo", algo)
             })
     
-    return {"version": 2, "files": results}
+    return {"version": 2, "files": results, "method": method_used}

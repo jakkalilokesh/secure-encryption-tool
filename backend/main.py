@@ -171,6 +171,7 @@ async def decrypt(
             "timestamp": datetime.now().isoformat(),
             "file_count": len(result.get("files", [])),
             "integrity_verified": True,
+            "method": result.get("method", "unknown"),
             "files": result.get("files", [])
         })
         

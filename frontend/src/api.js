@@ -1,4 +1,4 @@
-const API_BASE = "http://100.27.49.220";
+const API_BASE = "https://100.27.49.220";
 
 async function handleResponse(response) {
   if (!response.ok) {
@@ -111,7 +111,7 @@ export function encryptWithProgress(route, formData, onProgress) {
     };
 
     xhr.onerror = () => {
-      reject(new Error('Network error'));
+      reject(new Error('Network error. Check your connection or HTTPS certificate. (Visit /health and click Proceed)'));
     };
 
     xhr.onabort = () => {

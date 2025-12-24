@@ -246,7 +246,8 @@ export default function DecryptPage() {
       await downloadZip(json.files);
 
       setProgress(100);
-      setStatus("Decryption completed successfully!");
+      const method = json.method ? json.method.toUpperCase() : "UNKNOWN";
+      setStatus(`Decryption completed successfully using ${method}!`);
 
       setTimeout(() => {
         setProgress(0);
@@ -255,7 +256,7 @@ export default function DecryptPage() {
         setPassword("");
         setXPriv("");
         setRsaPriv("");
-      }, 3000);
+      }, 5000);
 
     } catch (err) {
       setProgress(0);
