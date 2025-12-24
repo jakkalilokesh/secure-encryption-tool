@@ -1,0 +1,295 @@
+import React, { useState } from "react";
+import NeonButton from "../components/NeonButton";
+import { generateX25519Keys, generateRSAKeys } from "../api";
+
+const sha256 = async (text) => {
+  const encoder = new TextEncoder();
+  const data = encoder.encode(text);
+  const hashBuffer = await crypto.subtle.digest("SHA-256", data);
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  return hashArray.map((b) => b.toString(16).padStart(2, "0")).join("");
+};
+
+export default function KeysPage() {
+  const [xKeys, setXKeys] = useState(null);
+  const [rsaKeys, setRsaKeys] = useState(null);
+
+  const [xMeta, setXMeta] = useState(null);
+  const [rsaMeta, setRsaMeta] = useState(null);
+
+  const [loadingX25519, setLoadingX25519] = useState(false);
+  const [loadingRSA, setLoadingRSA] = useState(false);
+
+  const downloadKeyPair = async (filename, metadata, pub, priv) => {
+    const content =
+      "======== KEYPAIR EXPORT ========\n" +
+      `Generated: ${metadata.created}\n` +
+      `Key Type : ${metadata.type}\n` +
+      `Key Size : ${metadata.size}\n` +
+      `Public FP: ${metadata.pubFp}\n` +
+      `Private FP: ${metadata.privFp}\n` +
+      "=================================\n\n" +
+      "==== PUBLIC KEY ====\n" +
+      pub +
+      "\n\n==== PRIVATE KEY ====\n" +
+      priv +
+      "\n";
+
+    const blob = new Blob([content], { type: "text/plain;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = filename;
+    a.click();
+
+    setTimeout(() => URL.revokeObjectURL(url), 100);
+  };
+
+  const copyToClipboard = (text) => {
+    navigator.clipboard.writeText(text).then(() => {
+      alert("Copied to clipboard!");
+    }).catch(err => {
+      console.error("Copy failed:", err);
+    });
+  };
+
+  const handleGenerateX25519 = async () => {
+    try {
+      setLoadingX25519(true);
+      const keys = await generateX25519Keys();
+
+      const pubFp = await sha256(keys.public_key_base64);
+      const privFp = await sha256(keys.private_key_base64);
+
+      const metadata = {
+        type: "X25519 (ECDH)",
+        size: "256-bit",
+        created: new Date().toLocaleString(),
+        pubFp: pubFp.slice(0, 32) + "..." + pubFp.slice(-8),
+        privFp: privFp.slice(0, 32) + "..." + privFp.slice(-8),
+        security_level: "128-bit",
+        curve: "Curve25519"
+      };
+
+      setXKeys(keys);
+      setXMeta(metadata);
+    } catch (error) {
+      alert("Failed to generate X25519 keys: " + error.message);
+    } finally {
+      setLoadingX25519(false);
+    }
+  };
+
+  const handleGenerateRSA = async () => {
+    try {
+      setLoadingRSA(true);
+      const keys = await generateRSAKeys();
+
+      const pubFp = await sha256(keys.public_key_pem);
+      const privFp = await sha256(keys.private_key_pem);
+
+      const metadata = {
+        type: "RSA (4096-bit)",
+        size: "4096-bit",
+        created: new Date().toLocaleString(),
+        pubFp: pubFp.slice(0, 32) + "..." + pubFp.slice(-8),
+        privFp: privFp.slice(0, 32) + "..." + privFp.slice(-8),
+        security_level: "112-bit",
+        exponent: "65537"
+      };
+
+      setRsaKeys(keys);
+      setRsaMeta(metadata);
+    } catch (error) {
+      alert("Failed to generate RSA keys: " + error.message);
+    } finally {
+      setLoadingRSA(false);
+    }
+  };
+
+  const RenderMetaCard = ({ meta, keys, keyType }) => {
+    if (!meta) return null;
+
+    return (
+      <div className="mt-4 border border-cyberGreen p-4 rounded-md bg-[#050d08] text-sm">
+        <div className="text-cyberGreen font-semibold text-lg mb-2">
+          Key Metadata
+        </div>
+
+        <div className="grid grid-cols-2 gap-3">
+          <div>
+            <div className="text-gray-400">Type</div>
+            <div>{meta.type}</div>
+          </div>
+
+          <div>
+            <div className="text-gray-400">Size</div>
+            <div>{meta.size}</div>
+          </div>
+
+          <div className="col-span-2">
+            <div className="text-gray-400">Created</div>
+            <div>{meta.created}</div>
+          </div>
+
+          <div className="col-span-2">
+            <div className="text-gray-400">Public Key Fingerprint</div>
+            <div className="break-all text-xs font-mono">{meta.pubFp}</div>
+          </div>
+
+          <div className="col-span-2">
+            <div className="text-gray-400">Private Key Fingerprint</div>
+            <div className="break-all text-xs font-mono">{meta.privFp}</div>
+          </div>
+        </div>
+
+        <div className="mt-4 flex gap-2">
+          <button
+            onClick={() => copyToClipboard(keyType === 'x25519' ? keys.public_key_base64 : keys.public_key_pem)}
+            className="px-3 py-1 text-xs border border-cyberGreen text-cyberGreen rounded hover:bg-cyberGreen/10"
+          >
+            Copy Public Key
+          </button>
+
+          <button
+            onClick={() => copyToClipboard(keyType === 'x25519' ? keys.private_key_base64 : keys.private_key_pem)}
+            className="px-3 py-1 text-xs border border-red-400 text-red-400 rounded hover:bg-red-400/10"
+          >
+            Copy Private Key
+          </button>
+        </div>
+      </div>
+    );
+  };
+
+  return (
+    <div className="text-white">
+      <h1 className="text-4xl text-cyberGreen font-bold mb-6">Key Pair Generation</h1>
+
+      <div className="grid md:grid-cols-2 gap-6">
+        {/* X25519 CARD */}
+        <div className="p-6 border border-cyberGreen rounded-md shadow-neonGreen">
+          <h3 className="text-cyberGreen text-xl font-semibold mb-4">X25519 Key Pair</h3>
+
+          <NeonButton
+            onClick={handleGenerateX25519}
+            disabled={loadingX25519}
+          >
+            {loadingX25519 ? "Generating..." : "Generate X25519"}
+          </NeonButton>
+
+          {xKeys && (
+            <>
+              <RenderMetaCard meta={xMeta} keys={xKeys} keyType="x25519" />
+
+              <div className="mt-6">
+                <NeonButton
+                  onClick={() =>
+                    downloadKeyPair(
+                      "x25519_keypair.txt",
+                      xMeta,
+                      xKeys.public_key_base64,
+                      xKeys.private_key_base64
+                    )
+                  }
+                >
+                  Download Key Pair (.txt)
+                </NeonButton>
+              </div>
+            </>
+          )}
+
+          <div className="mt-4 text-sm text-gray-400">
+            <div className="font-semibold text-cyberGreen mb-1">Advantages:</div>
+            <div>• Small key size (32 bytes)</div>
+            <div>• Fast performance</div>
+            <div>• Perfect forward secrecy</div>
+            <div>• Modern elliptic curve</div>
+          </div>
+        </div>
+
+        {/* RSA CARD */}
+        <div className="p-6 border border-cyberGreen rounded-md shadow-neonGreen">
+          <h3 className="text-cyberGreen text-xl font-semibold mb-4">RSA-4096 Key Pair</h3>
+
+          <NeonButton
+            color="blue"
+            onClick={handleGenerateRSA}
+            disabled={loadingRSA}
+          >
+            {loadingRSA ? "Generating..." : "Generate RSA-4096"}
+          </NeonButton>
+
+          {rsaKeys && (
+            <>
+              <RenderMetaCard meta={rsaMeta} keys={rsaKeys} keyType="rsa" />
+
+              <div className="mt-6">
+                <NeonButton
+                  onClick={() =>
+                    downloadKeyPair(
+                      "rsa4096_keypair.txt",
+                      rsaMeta,
+                      rsaKeys.public_key_pem,
+                      rsaKeys.private_key_pem
+                    )
+                  }
+                >
+                  Download Key Pair (.txt)
+                </NeonButton>
+              </div>
+            </>
+          )}
+
+          <div className="mt-4 text-sm text-gray-400">
+            <div className="font-semibold text-cyberGreen mb-1">Advantages:</div>
+            <div>• Widely compatible</div>
+            <div>• Can be used for encryption and signatures</div>
+            <div>• Well-understood security</div>
+            <div>• Good for legacy systems</div>
+          </div>
+        </div>
+      </div>
+
+      {/* Security Notes */}
+      <div className="mt-10 border border-cyberGreen p-6 rounded-md">
+        <h3 className="text-cyberGreen text-xl font-semibold mb-4">Security Notes</h3>
+
+        <div className="grid md:grid-cols-2 gap-6">
+          <div className="space-y-3">
+            <div className="p-3 bg-red-900/20 border border-red-500/50 rounded">
+              <div className="text-red-300 font-semibold mb-1">⚠ Never Share Private Keys</div>
+              <div className="text-red-200/80 text-sm">
+                Keep private keys secure. Anyone with your private key can decrypt your files.
+              </div>
+            </div>
+
+            <div className="p-3 bg-blue-900/20 border border-blue-500/50 rounded">
+              <div className="text-blue-300 font-semibold mb-1">🔐 Store Securely</div>
+              <div className="text-blue-200/80 text-sm">
+                Use password managers, encrypted USB drives, or hardware security modules.
+              </div>
+            </div>
+          </div>
+
+          <div className="space-y-3">
+            <div className="p-3 bg-yellow-900/20 border border-yellow-500/50 rounded">
+              <div className="text-yellow-300 font-semibold mb-1">💾 Backup Keys</div>
+              <div className="text-yellow-200/80 text-sm">
+                Store backups in multiple secure locations. Losing keys means losing access to encrypted files.
+              </div>
+            </div>
+
+            <div className="p-3 bg-green-900/20 border border-green-500/50 rounded">
+              <div className="text-green-300 font-semibold mb-1">🚀 Recommendation</div>
+              <div className="text-green-200/80 text-sm">
+                For most use cases, X25519 is recommended due to better performance and forward secrecy.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}

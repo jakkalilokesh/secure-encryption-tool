@@ -1,0 +1,334 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base page */
+body {
+  background: #020204;
+  color: #d8f8d8;
+  font-family: "Share Tech Mono", monospace;
+  overflow-x: hidden;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #07120a;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #0aff0a;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #00ff00;
+  box-shadow: 0 0 10px #0aff0a;
+}
+
+/* Make grid background subtle */
+.cyber-grid {
+  opacity: 0.14;
+}
+
+/* Inputs / selects / textarea */
+input,
+select,
+textarea {
+  background: #07120a !important;
+  color: #caffc9 !important;
+  border: 1px solid #0aff0a !important;
+  padding: 12px !important;
+  border-radius: 6px !important;
+  width: 100% !important;
+  box-shadow: none !important;
+  font-family: inherit !important;
+  transition: all 0.3s ease !important;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  box-shadow: 0 0 10px #0aff0a60 !important;
+  outline: none !important;
+  border-color: #00ff00 !important;
+}
+
+input:disabled,
+select:disabled,
+textarea:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Placeholder styling */
+::placeholder {
+  color: #6b8b6b !important;
+  opacity: 0.7 !important;
+}
+
+/* Neon text and accents */
+.text-cyberGreen {
+  color: #0aff0a;
+}
+
+.text-cyberBlue {
+  color: #00eaff;
+}
+
+.text-cyberPurple {
+  color: #b967ff;
+}
+
+.text-cyberRed {
+  color: #ff3232;
+}
+
+.text-cyberYellow {
+  color: #ffff00;
+}
+
+.shadow-neonGreen {
+  box-shadow: 0 0 8px #0aff0a,
+    inset 0 0 4px #0aff0a40;
+}
+
+.shadow-neonBlue {
+  box-shadow: 0 0 8px #00eaff,
+    inset 0 0 4px #00eaff40;
+}
+
+.shadow-neonPurple {
+  box-shadow: 0 0 8px #b967ff,
+    inset 0 0 4px #b967ff40;
+}
+
+/* Layout container */
+.main-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+  min-height: calc(100vh - 200px);
+}
+
+/* Buttons */
+button {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Table styles */
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th,
+td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #2a3a2a;
+}
+
+tr:hover {
+  background-color: rgba(10, 255, 10, 0.05);
+}
+
+/* Animations */
+@keyframes flicker {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-flicker {
+  animation: flicker 2s infinite;
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-gradient {
+  animation: gradient 3s ease infinite;
+  background-size: 200% 200%;
+}
+
+/* File drop zone active state */
+.drop-zone-active {
+  border-color: #00eaff !important;
+  background-color: rgba(0, 234, 255, 0.05) !important;
+}
+
+/* Checkbox styling */
+input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #0aff0a;
+  cursor: pointer;
+}
+
+/* Range input styling */
+input[type="range"] {
+  -webkit-appearance: none;
+  height: 6px;
+  background: #07120a;
+  border-radius: 3px;
+  border: 1px solid #0aff0a;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  background: #0aff0a;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 5px #0aff0a;
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  background: #0aff0a;
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 0 5px #0aff0a;
+}
+
+/* Text selection */
+::selection {
+  background: #0aff0a;
+  color: #020204;
+}
+
+/* Link styling */
+a {
+  color: #0aff0a;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #00eaff;
+  text-decoration: underline;
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+  .main-container {
+    padding: 16px;
+  }
+
+  input,
+  select,
+  textarea {
+    padding: 10px !important;
+  }
+
+  table {
+    display: block;
+    overflow-x: auto;
+  }
+}
+
+/* Custom utilities */
+.bg-grid-pattern {
+  background-image:
+    linear-gradient(rgba(10, 255, 10, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(10, 255, 10, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+.text-shadow-neon {
+  text-shadow: 0 0 5px currentColor;
+}
+
+/* Loading animation */
+.loading-dots:after {
+  content: '.';
+  animation: dots 1.5s steps(5, end) infinite;
+}
+
+@keyframes dots {
+
+  0%,
+  20% {
+    content: '.';
+  }
+
+  40% {
+    content: '..';
+  }
+
+  60% {
+    content: '...';
+  }
+
+  80%,
+  100% {
+    content: '';
+  }
+}
+
+/* ---- Fix deterministic checkbox alignment ---- */
+.deterministic-row {
+  justify-content: flex-start !important;
+  align-items: flex-start !important;
+  width: fit-content !important;
+  margin-left: 0 !important;
+  margin-right: auto !important;
+  text-align: left !important;
+}
+
+.deterministic-row input[type="checkbox"] {
+  margin-top: 0px;
+}
+
+/* File upload progress */
+.upload-progress {
+  background: linear-gradient(90deg, #0aff0a 0%, #00eaff 100%);
+  transition: width 0.3s ease;
+}
