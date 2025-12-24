@@ -175,6 +175,29 @@ export default function DecryptPage() {
       return;
     }
 
+    // X25519 Validation
+    if (requiresX25519) {
+      if (!xPriv.trim()) {
+        validationErrors.push("X25519 private key required.");
+      } else if (xPriv.trim().length !== 44 || !/^[A-Za-z0-9+/]+={0,2}$/.test(xPriv.trim())) {
+        validationErrors.push("Invalid X25519 Private Key. Must be a 32-byte Base64 string (44 chars).");
+      }
+    }
+
+    // RSA Validation
+    if (requiresRSA) {
+      if (!rsaPriv.trim()) {
+        validationErrors.push("RSA private key required.");
+      } else if (!rsaPriv.includes("BEGIN") || !rsaPriv.includes("PRIVATE KEY")) {
+        validationErrors.push("Invalid RSA Private Key. Must be in PEM format.");
+      }
+    }
+
+    if (validationErrors.length > 0) {
+      setErrors(validationErrors);
+      return;
+    }
+
     const fd = new FormData();
     fd.append("bundle", bundle);
     fd.append("password", password);

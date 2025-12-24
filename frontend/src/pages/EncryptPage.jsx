@@ -127,12 +127,31 @@ export default function EncryptPage() {
       newErrors.push("Password must be at least 12 characters.");
     }
 
-    if (requiresX25519 && !x25519Pub.trim()) {
-      newErrors.push("X25519 public key required.");
+    // X25519 Validation
+    if (requiresX25519) {
+      if (!x25519Pub.trim()) {
+        newErrors.push("X25519 public key required.");
+      } else {
+        try {
+          // Check for valid Base64 and length (32 bytes = 44 chars in Base64)
+          if (x25519Pub.trim().length !== 44 || !/^[A-Za-z0-9+/]+={0,2}$/.test(x25519Pub.trim())) {
+            newErrors.push("Invalid X25519 Public Key. Must be a 32-byte Base64 string (44 chars).");
+          }
+        } catch (e) {
+          newErrors.push("Invalid X25519 Public Key format.");
+        }
+      }
     }
 
-    if (requiresRSA && !rsaPub.trim()) {
-      newErrors.push("RSA public key required.");
+    // RSA Validation
+    if (requiresRSA) {
+      if (!rsaPub.trim()) {
+        newErrors.push("RSA public key required.");
+      } else {
+        if (!rsaPub.includes("BEGIN PUBLIC KEY") || !rsaPub.includes("END PUBLIC KEY")) {
+          newErrors.push("Invalid RSA Public Key. Must be in PEM format (-----BEGIN PUBLIC KEY-----).");
+        }
+      }
     }
 
     if (deterministic && algo !== "aes-256-siv") {
