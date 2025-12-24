@@ -61,12 +61,14 @@ def encrypt_v2(
     
     if x25519_pub_b64 and x25519_pub_b64.strip():
         try:
+            key_bytes = base64.b64decode(x25519_pub_b64.strip())
+            if len(key_bytes) != 32:
+                 raise ValueError(f"Invalid X25519 key length: expected 32 bytes, got {len(key_bytes)}")
+
             eph_priv = x25519.X25519PrivateKey.generate()
             eph_pub = eph_priv.public_key()
             
-            peer_pub = x25519.X25519PublicKey.from_public_bytes(
-                base64.b64decode(x25519_pub_b64.strip())
-            )
+            peer_pub = x25519.X25519PublicKey.from_public_bytes(key_bytes)
             
             shared_secret = eph_priv.exchange(peer_pub)
             x25519_key = hkdf(shared_secret, b"x25519-enc-key")
@@ -82,9 +84,11 @@ def encrypt_v2(
     
     if rsa_pub_pem and rsa_pub_pem.strip():
         try:
-            rsa_pub_key = serialization.load_pem_public_key(
-                rsa_pub_pem.strip().encode()
-            )
+            pem_str = rsa_pub_pem.strip()
+            if "BEGIN PUBLIC KEY" not in pem_str and "BEGIN RSA PUBLIC KEY" not in pem_str:
+                 raise ValueError("Invalid RSA key format: Missing PEM header")
+
+            rsa_pub_key = serialization.load_pem_public_key(pem_str.encode())
             
             wrapped_key = rsa_pub_key.encrypt(
                 master_key,
