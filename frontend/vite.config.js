@@ -3,6 +3,7 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
+  base: '/secure-encryption-tool/',
   server: {
     port: 3000,
     host: true
