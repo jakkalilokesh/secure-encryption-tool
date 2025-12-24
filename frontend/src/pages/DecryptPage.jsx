@@ -188,8 +188,11 @@ export default function DecryptPage() {
     if (requiresRSA) {
       if (!rsaPriv.trim()) {
         validationErrors.push("RSA private key required.");
-      } else if (!rsaPriv.includes("BEGIN") || !rsaPriv.includes("PRIVATE KEY")) {
-        validationErrors.push("Invalid RSA Private Key. Must be in PEM format.");
+      } else {
+        const pemRegex = /-----BEGIN (?:RSA )?PRIVATE KEY-----\s*[a-zA-Z0-9+/=\s]+\s*-----END (?:RSA )?PRIVATE KEY-----/;
+        if (!pemRegex.test(rsaPriv.trim())) {
+          validationErrors.push("Invalid RSA Private Key. Must be a valid PEM format.");
+        }
       }
     }
 

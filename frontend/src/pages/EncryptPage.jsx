@@ -148,8 +148,9 @@ export default function EncryptPage() {
       if (!rsaPub.trim()) {
         newErrors.push("RSA public key required.");
       } else {
-        if (!rsaPub.includes("BEGIN PUBLIC KEY") || !rsaPub.includes("END PUBLIC KEY")) {
-          newErrors.push("Invalid RSA Public Key. Must be in PEM format (-----BEGIN PUBLIC KEY-----).");
+        const pemRegex = /-----BEGIN (?:RSA )?PUBLIC KEY-----\s*[a-zA-Z0-9+/=\s]+\s*-----END (?:RSA )?PUBLIC KEY-----/;
+        if (!pemRegex.test(rsaPub.trim())) {
+          newErrors.push("Invalid RSA Public Key. Must be a valid PEM format.");
         }
       }
     }
