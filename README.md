@@ -131,8 +131,8 @@ During my internship period, I participated in multiple community-oriented activ
 ### **Photos**
 
 <div align="center">
-<img src="https://github.com/jakkalilokesh/blob/a1b3dc95199c7ff992359853ee4f9cf09a660dad/Final%20capstone%20project/Plantaion.jpeg" alt="Community Service Photo 1" width="30%">
-<img src="https://github.com/jakkalilokesh/blob/b714717a1063546aad660661a61f73d16ae5d08d/Final%20capstone%20project/Senior%20Citizens.jpeg" alt="Community Service Photo 2" width="30%">
+<img src="https://github.com/jakkalilokesh/secure-encryption-tool/blob/8e46c137f283fcb2b0e0cc811536c626d05ed58a/Plantaion.jpeg" alt="Community Service Photo 1" width="35%">
+<img src="https://github.com/jakkalilokesh/secure-encryption-tool/blob/8e46c137f283fcb2b0e0cc811536c626d05ed58a/Senior%20Citizens.jpeg" alt="Community Service Photo 2" width="35%">
 </div>
 
 ## **Certificate**
