@@ -1,172 +1,155 @@
-# 🛡️ Secure Encryption Tool
+ <div align="center" style="border: 2px solid #ccc; padding: 20px; border-radius: 12px; width: 80%; margin: auto; box-shadow: 0 0 10px rgba(0,0,0,0.15);">
+    <img
+        width="180"
+        height="220"
+        alt="Logo - SURE ProEd"
+        src="https://github.com/user-attachments/assets/88fa5098-24b1-4ece-87df-95eb920ea721"
+        style="border-radius: 10px;"
+    />
 
-<div align="center">
+  <h1 align="center" style="font-family: Arial; font-weight: 600; margin-top: 15px;">SURE ProEd (formerly SURE Trust) 
+      </h1>
+<h2 style="color: #2b6cb0; font-family: Arial;">Skill Upgradation for Rural youth Empowerment Trust</h2>
+</div>
 
-![Security Level](https://img.shields.io/badge/Security-High-green?style=for-the-badge)
-![Encryption](https://img.shields.io/badge/Encryption-AES%20%7C%20ChaCha20-blue?style=for-the-badge)
-![Backend](https://img.shields.io/badge/Backend-FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)
-![Frontend](https://img.shields.io/badge/Frontend-React%20%2B%20Vite-61DAFB?style=for-the-badge&logo=react&logoColor=black)
+<hr style="border: 0; border-top: 1px solid #ccc; width: 80%;" />
 
-**A professional-grade, chunk-based file encryption suite built for security and performance.**
+<div style="padding: 20px; border: 2px solid #ddd; border-radius: 12px; width: 90%; margin: auto; background: #fafafa; font-family: Arial;">
+
+<h2 style = "color:#333;"> Student Details </h2>
+<div align = "left" style ="margin: 20px; font-size: 16px;">
+    <p><strong>Name:</strong> Jakkali Lokesh </p>
+    <p><strong>Email ID:</strong> jakkalilokesh@gmail.com </p>
+    <p><strong>College Name:</strong> Rayalaseema University College Of Engineering </p>
+    <p><strong>Branch/Specialization :</strong> Computer Science & Engineering </p>
+    <p><strong>College ID:</strong> 23RU5A0503 </p>
+</div>
+
+<hr style="border: 0; border-top: 1px solid #ccc; width: 80%;" />
+
+<h2 style="color:#333;"> Course Details </h2>
+<div align="left" style="margin: 20px; font-size: 16px;">
+    <p><strong>Course Opted:</strong> Cybersecurity & Ethical Hacking </p>
+    <p><strong>Instructor Name:</strong> Derick Johnson </p>
+</div>
+<div align="left" style="margin: 20px; font-size: 16px;">
+    <p><strong>Duration:</strong> 6 Months </p>
+
+<hr style="border: 0; border-top: 1px solid #ccc; width: 80%;" />
+
+<h2 style="color:#333;"> Trainer Details </h2>
+<div align="left" style="margin: 20px; font-size: 16px;">
+
+<p><strong>Trainer Name:</strong> Derick Johnson </p>
+<p><strong>Trainer Email ID:</strong> jderickmathew@gmail.com </p>
+<p><strong>Trainer Designation:</strong> President at MRISA - Cyber Security Club</p>
+
+<hr style="border: 0; border-top: 1px solid #ccc; width: 80%;" />
+
+## **Table of Contents**
+- [Course Learning](#course-learning-to-be-edited-by-student)
+- [Projects Completed](#projects-completed)
+- [Project Introduction](#project-introduction)
+- [Technologies Used](#technologies-used)
+- [Roles and Responsibilities](#roles-and-responsibilities)
+- [Project Report](#project-report)
+- [Learnings from LST & SST](#learnings-from-lst--sst)
+- [Community Services](#community-services)
+- [Certificate](#certificate)
+- [Acknowledgments](#acknowledgments)
+
+<hr style="border: 0; border-top: 1px solid #ccc; width: 80%;" />
+
+
+## Overall Learning 
+
+During this internship, I gained a comprehensive understanding of Cybersecurity and Ethical Hacking, with practical exposure to Vulnerability Assessment and Penetration Testing (VAPT). I learned how attackers identify, exploit, and escalate vulnerabilities across networks, systems, Active Directory environments, and web applications. Through hands-on labs, I developed technical skills in footprinting, scanning, enumeration, system hacking, post-exploitation, sniffing and spoofing, malware analysis, cryptography, and steganography, along with identifying and exploiting vulnerabilities listed in the OWASP Top 10.
+
+In addition, I gained knowledge of Governance, Risk, and Compliance (GRC) concepts, including risk assessment, security policies, compliance frameworks, and security documentation practices. I also learned the fundamentals of Digital Forensics, including evidence acquisition, disk imaging, forensic analysis, and investigation methodologies. I gained hands-on experience using digital forensic tools such as Autopsy, FTK Imager, and related utilities for data acquisition, evidence preservation, and forensic examination.
+
+Furthermore, I developed experience in setting up penetration testing labs, working with Kali Linux, Metasploit, and industry-standard security tools, preparing professional vulnerability assessment reports, and applying CVSS scoring for risk prioritization. This internship enhanced my analytical thinking, problem-solving abilities, ethical responsibility, documentation skills, and understanding of real-world cybersecurity practices, preparing me for entry-level roles in cybersecurity, penetration testing, and digital forensics.
+
+
+<h2 style="color:#333;"> Projects Completed </h2>
+<div align="left" style="margin: 20px; font-size: 16px;">
+
+<p><strong><a href="#project1">Project 1:</a></strong> Cybersecurity & Ethical Hacking </p>
 
 </div>
 
+<!-- Project 1 -->
+<h3 id="project1">Project 1: Data Encryption & File Security Tool</h3>
+<p>
+  This project involved designing and developing a basic functional module using the core concepts taught in the course.
+  It focused on understanding requirements, creating structured code, and implementing key features.
+</p>
+<p>
+  <a href="https://github.com/jakkalilokesh/secure-encryption-tool/blob/936b87c21ac583dc5f84abb8dd2a8e0a52dabdfd/SURE%20Trust%20project%20document.pdf" target="_blank"><strong>→ View Full Project Report</strong></a>
+</p>
+
+<hr style="height:1px; border-top:1px solid #ccc; width:80%;" />
+
+
+## **References**
+
+- FastAPI Documentation: FastAPI. Retrieved from https://fastapi.tiangolo.com/
+- React Documentation: React. Retrieved from https://react.dev/
+- Cryptography Python Package: pyca/cryptography. Retrieved from https://cryptography.io/en/latest/
+- Web Crypto API: MDN Web Docs. Retrieved from https://developer.mozilla.org/en-US/docs/Web/API/Web_Crypto_API
+- Pillow (PIL Fork): Python Pillow. Retrieved from https://python-pillow.org/
+- RFC 7539: ChaCha20 and Poly1305 for IETF Protocols. (2015). Internet Engineering Task Force (IETF). https://datatracker.ietf.org/doc/html/rfc7539
+- RFC 8452: AES-GCM-SIV: Nonce Misuse-Resistant Authenticated Encryption. (2019). Internet Engineering Task Force (IETF). https://datatracker.ietf.org/doc/html/rfc8452
+- RFC 8032: Edwards-Curve Digital Signature Algorithm (EdDSA). (2017). Internet Engineering Task Force (IETF). https://datatracker.ietf.org/doc/html/rfc8032
+
+
+## **Learnings from LST and SST**
+
+- LST and SST sessions helped me develop strong professional and personal skills required for holistic growth. These sessions improved my communication, presentation, and interpersonal abilities, enabling me to express ideas confidently. I learned personality branding and professional networking, which enhanced my self-awareness and workplace presence. Training in lateral thinking strengthened my problem-solving and decision-making skills. Entrepreneurship sessions provided insights into innovation, leadership, and real-world business thinking. Financial management modules helped me understand personal budgeting, financial discipline, and long-term planning. Yoga, wellbeing, and preventive medicine sessions emphasized the importance of physical and mental health. Community service activities instilled social responsibility and ethical values. Learning from exemplary industrialists and scientists inspired leadership, discipline, and national contribution. Mock interview sessions increased my confidence and preparedness for professional career opportunities.
 ---
 
-## 📋 Overview
+## **Community Services**
 
-Secure Encryption Tool is a web-based application designed to perform secure, client-side-like encryption operations. Unlike simple file lockers, it uses **streamed chunk-based processing**, allowing it to handle huge files (up to 10GB) without eating up RAM.
+<!-- add descreption in your own words -->
 
-It supports multiple modern cryptographic primitives including **AES-256-GCM**, **ChaCha20-Poly1305**, and **AES-256-SIV** (for deterministic encryption), along with robust key management using **RSA-4096** and **X25519**.
+During my internship period, I participated in multiple community-oriented activities .....<!-- add descreption in your own words -->
 
-## ✨ Key Features
+### **Activities Involved**
+ <!-- add the location where you have panted -->
+- **Tree Plantation Drive** – Participated by planting trees and contributing to environmental improvement.
 
-- **🔒 Multi-Layer Encryption Modes**:
-  - **Triple**: Password + X25519 + RSA (Paranoid security)
-  - **Dual**: Password + X25519
-  - **Single**: Password-only, Key-only (RSA/X25519)
-- **⚡ High Performance**:
-  - **Chunked Processing**: Encrypts files of any size (tested up to 10GB).
-  - **Parallelism**: Uses `ThreadPoolExecutor` and CPU cores efficiently.
-- **🛡️ Advanced Cryptography**:
-  - **Algorithms**: AES-256-GCM (Default), ChaCha20-Poly1305 (Mobile/Fast), AES-256-SIV (Deterministic).
-  - **KDF**: Scrypt (Memory-hard) for passwords, HKDF-SHA256 for key derivation.
-  - **Integrity**: Ed25519 signatures for bundle verification.
-  - **Metadata Protection**: Encrypts filenames and directory structure.
-- **👁️ Transparent Deterministic Mode**: securely deduplicate files using AES-SIV-256 with 64-byte derived keys.
+  <!-- add the location where you helped -->
+- **Helping Elder Citizens** – Assisted two elderly individuals with simple daily tasks and provided support where needed. 
 
-## 🛠️ Technology Stack
+<!-- you can write impacts according to your experience in your words-->
 
-### Backend
-- **Language**: Python 3.9+
-- **Framework**: FastAPI (Async/Await)
-- **Cryptography**: `cryptography` library (OpenSSL bindings), `PyNaCl`
-- **Concurrency**: `concurrent.futures`, `asyncio`
+### **Impact / Contribution**
 
-### Frontend
-- **Framework**: React 18 (Vite)
-- **Styling**: Tailwind CSS (Dark/Cyberpunk theme)
-- **Components**: `chunk-upload`, `framer-motion` animations
+- Actively participated in promoting a greener and cleaner surroundings.
+- Offered personal assistance to elder citizens, strengthening community bonds.
+- Improved skills in communication, coordination, and social responsibility.
 
----
+### **Photos**
 
-## 🚀 Installation & Setup
+<div align="center">
+<img src="https://github.com/jakkalilokesh/blob/a1b3dc95199c7ff992359853ee4f9cf09a660dad/Final%20capstone%20project/Plantaion.jpeg" alt="Community Service Photo 1" width="30%">
+<img src="https://github.com/jakkalilokesh/blob/b714717a1063546aad660661a61f73d16ae5d08d/Final%20capstone%20project/Senior%20Citizens.jpeg" alt="Community Service Photo 2" width="30%">
+</div>
 
-### Prerequisites
-- Python 3.8+
-- Node.js 16+
-- Git
+## **Certificate**
 
-### 1️⃣ Clone the Repository
-```bash
-git clone https://github.com/yourusername/secure-encryption-tool.git
-cd secure-encryption-tool
-```
+The internship certificate serves as an official acknowledgment of the successful completion of my training period. It will be issued by the organization upon fulfilling all required tasks and meeting the performance expectations of the program. The certificate validates the skills, experience, and contributions made during the internship.
 
-### 2️⃣ Backend Setup
-Navigate to the backend directory and set up the environment.
+<!-- add your certificate image url below (inside src='')-->
 
-```bash
-cd backend
-
-# Create virtual environment
-python -m venv .venv
-
-# Activate environment
-# Windows:
-.venv\Scripts\activate
-# Linux/Mac:
-source .venv/bin/activate
-
-# Install dependencies
-pip install -r requirements.txt
-```
-
-**Start the Backend Server:**
-```bash
-uvicorn main:app --reload
-```
-*Backend runs on `http://127.0.0.1:8000`*
-
-### 3️⃣ Frontend Setup
-Open a new terminal and navigate to the frontend directory.
-
-```bash
-cd frontend
-
-# Install dependencies
-npm install
-
-# Start development server
-npm run dev
-```
-*Frontend runs on `http://localhost:3000`*
+<p align="center">
+<img src="https://github.com/Lord-Rahul/Practice-Programs/blob/main/react/1/public/Gemini_Generated_Image_a6w8rda6w8rda6w8.png?raw=true" alt="Internship Certificate" width="80%">
+</p>
 
 ---
 
-## 📖 Usage Guide
+## **Acknowledgments**
 
-### Encrypting Files
-1.  Navigate to the **Encrypt** page.
-2.  Drag & drop files or folders (supports multiple files).
-3.  Select an **Encryption Mode** (e.g., *Password Only* for simplicity, *Triple* for max security).
-4.  (Optional) Select Algorithm (AES-GCM is standard).
-5.  Enter Password or paste Keys as required.
-6.  Click **Start Encryption**.
-7.  A secure `.zip` bundle will be downloaded automatically.
+<!-- you can add Acknowledgments over here in same syntax as below . eg trainer name , company name , role etc -->
 
-### Decrypting Files
-1.  Navigate to the **Decrypt** page.
-2.  Upload the encrypted `.zip` bundle.
-3.  Enter the Password or Keys used for encryption.
-4.  Click **Decrypt**.
-5.  The original files will be reconstructed and downloaded.
+- [Prof. Radhakumari Challa](https://www.linkedin.com/in/prof-radhakumari-challa-a3850219b) , Executive Director and Founder - [SURE Trust](https://www.suretrustforruralyouth.com/)
 
-### Generating Keys
-- Go to the **Keys** page to generate secure **X25519 Keypairs** (for fast asymmetric encryption) or **RSA-4096 Keypairs**.
-- **Important**: Save your private keys securely! If you lose them, data cannot be recovered.
-
----
-
-## ⚙️ API Documentation
-
-The backend exposes a REST API (auto-docs available at `/docs` when running).
-
-- `POST /encrypt/{mode}`: Encrypt streams of files.
-- `POST /decrypt`: Decrypt a bundle.
-- `GET /keys/x25519`: Generate X25519 keypair.
-- `GET /keys/rsa`: Generate RSA-4096 keypair.
-- `GET /security/info`: Get system security capabilities.
-
----
-
-## 🚢 Deployment
-
-### Frontend (GitHub Pages / Vercel / Netlify)
-Build the frontend static files:
-```bash
-cd frontend
-npm run build
-```
-Deploy the `dist` folder. Note: If deploying on a different domain than backend, update `API_BASE` in `src/api.js`.
-
-### Backend (AWS / DigitalOcean / Render)
-Deploy using Docker or a standard Python environment.
-
-**Systemd Service (Ubuntu/Debian):**
-Refere to `backend/deploy/encryption-backend.service` included in the repo for a template.
-
----
-
-## ⚠️ Security Notice
-
-While this tool uses industry-standard strong cryptography:
-1.  **Use HTTPS** in production to protect passwords/keys in transit.
-2.  **Private Keys** should never be shared. Use a password manager.
-3.  This tool provides **At-Rest Encryption**. The server technically has access to keys during the encryption request (in memory). For pure zero-knowledge, run the backend locally (localhost).
-
----
-
-## 📄 License
-
-Distributed under the MIT License. See `LICENSE` for more information.
