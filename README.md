@@ -142,7 +142,7 @@ The internship certificate serves as an official acknowledgment of the successfu
 <!-- add your certificate image url below (inside src='')-->
 
 <p align="center">
-<img src="https://github.com/Lord-Rahul/Practice-Programs/blob/main/react/1/public/Gemini_Generated_Image_a6w8rda6w8rda6w8.png?raw=true" alt="Internship Certificate" width="80%">
+<img src="https://www.linkedin.com/posts/jakkali-lokesh-a1a809211_sureproed-cybersecurity-ethicalhacking-activity-7416349388945416192-wAbm?utm_source=share&utm_medium=member_android&rcm=ACoAADWw8nYBK-XXXHqROpdttILHClKB1GSibF8" alt="Internship Certificate" width="80%">
 </p>
 
 ---
